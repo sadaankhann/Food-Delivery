@@ -5,15 +5,20 @@ import FoodItem from "../FoodItem/FoodItem";
 
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
+  console.log("Selected category:", category);
+  console.log("Food categories:", food_list.map(i => i.category));
   return (
     <div className="food-display" id="food-display">
       <h2>Top dishes near you</h2>
       <div className="food-display-list">
-        {food_list.map((item, index) => {
-          if ((category === "All" || category === item.category))
+        {food_list.map((item) => {
+          if (
+            category === "All" ||
+            category.toLowerCase() === item.category.toLowerCase()
+          ) {
             return (
               <FoodItem
-                key={index}
+                key={item._id}
                 id={item._id}
                 name={item.name}
                 description={item.description}
@@ -21,7 +26,13 @@ const FoodDisplay = ({ category }) => {
                 image={item.image}
               />
             );
+          }
+
+
+
+          return null;
         })}
+
       </div>
     </div>
   );

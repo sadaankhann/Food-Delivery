@@ -1,6 +1,7 @@
 .footer {
   color: #d9d9d9;
-  background-color: #323232;
+  /* background-color: #323232; */
+  background-color: #ff7259;
   display: flex;
   flex-direction: column;
   align-items: center;
